@@ -3,34 +3,20 @@
 
 #![allow(unused)]
 fn solution() -> u64 {
-    let mut number: u64 = 0;
+    let mut prime_candidate: u64 = 3;
     let mut primes = Vec::with_capacity(10_001);
+    primes.push(2);
 
     while primes.len() <= 10_000 {
-        if is_prime(number) {
-            primes.push(number);
+        let is_prime = !primes.iter().any(|&x| prime_candidate % x == 0);
+
+        if is_prime {
+            primes.push(prime_candidate);
         }
-        number += 1;
+        prime_candidate += 2;
     }
-    println!("{:#?}", primes);
+
     *primes.last().unwrap()
-}
-
-fn is_prime(number: u64) -> bool {
-    if number == 2 {
-        return true;
-    }
-
-    if number % 2 == 0 {
-        return false;
-    }
-
-    for i in 2..number {
-        if number % i == 0 {
-            return false;
-        }
-    }
-    true
 }
 
 #[cfg(test)]
