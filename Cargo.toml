@@ -7,4 +7,5 @@ members = [
     "problem_005",
     "problem_006",
     "problem_007",
+    "problem_008",
 ]
